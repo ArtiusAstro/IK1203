@@ -1,6 +1,6 @@
-import java.net.*;
-import java.io.*;
-import tcpclient.TCPClient;
+import java.net.ServerSocket;
+import java.net.Socket;
+import t4.SomRunnable;
 
 public class MultiHTTPAsk{
 
@@ -11,7 +11,7 @@ public class MultiHTTPAsk{
 
             while(true){
                 Socket clientSocket = serverSocket.accept();
-                new Thread(new MyRunnable(clientSocket)).start();
+                new Thread(new SomRunnable(clientSocket)).start();
             }
         }
         catch(Exception e){

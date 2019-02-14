@@ -12,7 +12,6 @@ public class HTTPEcho {
                 BufferedReader inFromClient = new BufferedReader(new InputStreamReader(conSocket.getInputStream()));
                 DataOutputStream outToClient = new DataOutputStream(conSocket.getOutputStream());
 
-
                 String s  = "HTTP/1.1 200 OK\r\n\r\n";
                 StringBuilder sB = new StringBuilder();
                 sB.append(s);
