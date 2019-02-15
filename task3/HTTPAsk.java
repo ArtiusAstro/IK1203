@@ -1,30 +1,26 @@
 package IK1203.task3;
 
-import java.net.*;
-import java.io.*;
 import tcpclient.TCPClient;
+import java.io.IOException;
 
 public class HTTPAsk {
    public static void main( String[] args) {
-       String hostname;
-       int port;
-       String serverInput = null;
+       String host, serverIn = null; int port;
 
        try {
-           hostname = args[0];
+           host = args[0];
            port = Integer.parseInt(args[1]);
            if (args.length >= 3) {
-               // Collect remaining arguments into a single string
-               StringBuilder builder = new StringBuilder();
+               StringBuilder sb = new StringBuilder();
                boolean first = true;
                for (int i = 2; i < args.length; i++) {
                    if (first)
                        first = false;
                    else
-                       builder.append(" ");
-                   builder.append(args[i]);
+                       sb.append(" ");
+                   sb.append(args[i]);
                }
-               serverInput = builder.toString();
+               serverIn = sb.toString();
            }
        }
        catch (Exception ex) {
@@ -32,8 +28,8 @@ public class HTTPAsk {
            return;
        }
        try {
-           String serverOutput = TCPClient.askServer(hostname, port, serverInput);
-           System.out.printf("%s:%d says:\n%s", hostname, port, serverOutput);
+           String serverOut = TCPClient.askServer(host, port, serverIn);
+           System.out.printf("%s:%d says:\n%s", host, port, serverOut);
        } catch(IOException ex) {
            System.err.println(ex);
        }

@@ -1,5 +1,4 @@
-package IK1203.task4.tcpclient;
-
+package tcpclient;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -33,14 +32,10 @@ public class TCPClient {
         clientSocket.setSoTimeout(5000);
         BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         String x; StringBuilder answer = new StringBuilder();
-        final int MAX = 256; int c = 1;
+        final int MAX = 256; int c = 0;
         try {
-            while ((x=inFromServer.readLine())!=null) {
+            while ((x=inFromServer.readLine())!=null && c++<=MAX) {
                 answer.append(x).append('\n');
-                if(c++>MAX){
-                    clientSocket.close();
-                    return answer.toString();
-                }
             }
             clientSocket.close();
             return answer.toString();
