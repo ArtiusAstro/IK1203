@@ -1,4 +1,4 @@
-package IK1203.task3.tcpclient;
+package tcpclient;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
